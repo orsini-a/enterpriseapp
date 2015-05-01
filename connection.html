@@ -30,7 +30,7 @@ function post(path, params, method)
          type: "POST",
          data: params,
          
-             //   dataType: "json",
+                dataType: "json",
          success: function(result) {
              console.log("Response " + JSON.stringify(result));
           
@@ -52,7 +52,7 @@ var obj=new log();
 obj["username"]=f.username.value;//f.uid.value;//f.pseudo.value; // document.getElementById('nom').value
 obj["password"]= f.password.value;// f.upstatu.value;
 var jsondata = JSON.stringify(obj); //convertir l'objet au format json
-post("http://epitechsocialnetwor-env.elasticbeanstalk.com/login", "{\"username\":\"saluttoi\",\"password\":\"123\"}", "POST");
+post("http://epitechsocialnetwor-env.elasticbeanstalk.com/login", "{\"username\":\"saluttoi\",\"password\":\"coucou\"}", "POST");
 alert("ok"); 
       return true;
    }

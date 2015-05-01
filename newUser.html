@@ -14,8 +14,8 @@
 <script type="text/javascript">
 function User()
 {
-    this.username = "";
-    this.password = "";
+this.username = "";
+this.password = "";
 //this.mail = "";
 //this.followers = "";
 }
@@ -98,6 +98,12 @@ function verifPass(champ)
    }
 }
 
+function newUserToJSon(pseudo, pass, mail, follow)
+{
+   consol.log("ok");
+   var _user = new User(pseudo, pass, mail, follow);
+   return JSON.stringify(_user);
+}
 
 function post(path, params, method) 
 {
@@ -132,19 +138,32 @@ function getCreateResponse(f)
    if(mdp1 && mdp2)
       var mdpOk = checkPass(f.mdp1, f.mdp2);
    else
-      var mdpOk = false;
+   var mdpOk = false;
 
    if(pseudoOk && mailOk && ageOk && mdpOk)
    {
-        var obj=new User();
-        obj["username"]=f.pseudo.value; // document.getElementById('nom').value
-        obj["password"]=f.mdp1.value;
+
+
+var obj=new User();
+obj["username"]=f.pseudo.value; // document.getElementById('nom').value
+obj["password"]=f.mdp1.value;
 //obj["mail"]=f.email.value;
 //onj["followers"]=f.pseudo.value;
-        var jsondata = JSON.stringify(obj); //convertir l'objet au format json
-        post("http://epitechsocialnetwor-env.elasticbeanstalk.com/add_user", jsondata, "POST");
-        return true;
+var jsondata = JSON.stringify(obj); //convertir l'objet au format json
+
+
+
+
+
+//     consol.log("ok");
+
+//      var myJSONstr = newUserToJSon(f.pseudo, f.mdp1, f.email, "vgfrvgf");
+      post("http://epitechsocialnetwor-env.elasticbeanstalk.com/add_user", jsondata, "POST");
+
+        alert("ok"); 
+      return true;
    }
+   
    else
    {
       alert("Veuillez remplir correctement tous les champs");
@@ -156,7 +175,7 @@ function getCreateResponse(f)
 
 
 <div name="newUserForm">
-<form action="../controller/c_newUser.html" method="post" enctype="multipart/form-data" onsubmit="getCreateResponse(this)">
+<form action="index.html" method="post" enctype="multipart/form-data" onsubmit="getCreateResponse(this)">
 
     Pseudo : <input type="text" name="pseudo" onblur="verifPseudo(this)" /><br />
     E-mail : <input type="text" name="email" size="30" onblur="verifMail(this)" /><br />
@@ -171,8 +190,13 @@ function getCreateResponse(f)
 <div name="GoBack">
 <form action="Index.html" method="post" enctype="multipart/form-data">
     <input type="submit" value="Retour a l'acceuil"/>
-</form>
 </div>
+</form>
+
+
+
+
 
 </body>
+
 </html>

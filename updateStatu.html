@@ -74,7 +74,7 @@ obj["id_user"]='5';//f.uid.value;//f.pseudo.value; // document.getElementById('n
 obj["content"]= f.upstatu.value;
 var jsondata = JSON.stringify(obj); //convertir l'objet au format json
 post("http://epitechsocialnetwor-env.elasticbeanstalk.com/add_post", jsondata, "POST");
-getpost("http://epitechsocialnetwor-env.elasticbeanstalk.com/get_post", jsondata, "GET");
+//getpost("http://epitechsocialnetwor-env.elasticbeanstalk.com/get_post", jsondata, "GET");
 
 alert("ok"); 
       return true;
