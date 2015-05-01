@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+<head>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<!-- en-tete du document -->
+
+  <title>Un exemple</title>
+
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+</head>
+
+<body>
+<script type="text/javascript">
+
+function log()
+{
+this.username = "";
+this.password = "";
+}
+
+function post(path, params, method) 
+{
+  console.log(JSON.stringify(params));
+    $.ajax({
+
+         // contentType: "application/json",
+         crossDomain: true,
+         url: path,
+         type: "POST",
+         data: params,
+         
+             //   dataType: "json",
+         success: function(result) {
+             console.log("Response " + JSON.stringify(result));
+          
+          },
+      error : function(request, textStatus, errorThrown) {
+        alert('textStatus ' + request);
+
+        alert('textStatus ' + textStatus);
+        alert('errorThrown ' + errorThrown);
+       }
+
+          });
+}
+
+function getlog(f)
+{
+
+var obj=new log();
+obj["username"]=f.username.value;//f.uid.value;//f.pseudo.value; // document.getElementById('nom').value
+obj["password"]= f.password.value;// f.upstatu.value;
+var jsondata = JSON.stringify(obj); //convertir l'objet au format json
+post("http://epitechsocialnetwor-env.elasticbeanstalk.com/login", "{\"username\":\"saluttoi\",\"password\":\"123\"}", "POST");
+alert("ok"); 
+      return true;
+   }
+   
+</script>
+<!--<script type="text/javascript" src="../controller/c_newUser.html"></script>-->
+
+
+<div name="logform">
+<form action="updateStatu.html" method="post" enctype="multipart/form-data" onsubmit="getlog(this)">
+
+    Login: <input type="text" name="username" /><br />
+        Password: <input type="text" name="password" /><br />
+    
+    <input type="submit" value="Valider"/>
+</form>
+</div>
+
+
+<div name="back">
+<form action="index.html" method="post" enctype="multipart/form-data">
+
+    <input type="submit" value="Back"/>
+</form>
+</div>
+
+
+</body>
+
+</html>

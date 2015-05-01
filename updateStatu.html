@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+<head>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<!-- en-tete du document -->
+
+  <title>Un exemple</title>
+
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+</head>
+
+<body>
+<script type="text/javascript">
+
+function upStatus()
+{
+this.id_user = "";
+this.content = "";
+}
+
+function post(path, params, method) 
+{
+    $.ajax({
+
+         // contentType: "application/json",
+         crossDomain: true,
+         url: path,
+         type: "POST",
+         data: params,
+                  dataType: "json",
+         success: function(result) {
+             console.log("Response " + JSON.stringify(result) );//JSON.stringify(result));
+          
+          },
+      error : function(request, textStatus, errorThrown) {
+        alert('textStatus ' + request);
+
+        alert('textStatus ' + textStatus);
+        alert('errorThrown ' + errorThrown);
+       }
+
+          });
+}
+
+function getpost(path, params, method) 
+{
+    $.ajax({
+
+         // contentType: "application/json",
+         crossDomain: true,
+         url: path,
+         type: "POST",
+         dataType: "json",
+         success: function(result) {
+             console.log("Response " + JSON.stringify(result) );//JSON.stringify(result));
+          
+          },
+      error : function(request, textStatus, errorThrown) {
+        alert('textStatus ' + request);
+
+        alert('textStatus ' + textStatus);
+        alert('errorThrown ' + errorThrown);
+       }
+
+          });
+}
+
+function getstat(f)
+{
+
+var obj=new upStatus();
+obj["id_user"]='5';//f.uid.value;//f.pseudo.value; // document.getElementById('nom').value
+obj["content"]= f.upstatu.value;
+var jsondata = JSON.stringify(obj); //convertir l'objet au format json
+post("http://epitechsocialnetwor-env.elasticbeanstalk.com/add_post", jsondata, "POST");
+getpost("http://epitechsocialnetwor-env.elasticbeanstalk.com/get_post", jsondata, "GET");
+
+alert("ok"); 
+      return true;
+   }
+   
+</script>
+<!--<script type="text/javascript" src="../controller/c_newUser.html"></script>-->
+
+
+<div name="newStatuForm">
+<form action="updateStatu.html" method="post" enctype="multipart/form-data" onsubmit="getstat(this)">
+
+    Que faites-vous ? <input type="text" name="upstatu" /><br />
+    <input type="submit" value="Valider"/>
+</form>
+</div>
+
+
+<div name="back">
+<form action="index.html" method="post" enctype="multipart/form-data">
+
+    <input type="submit" value="Back"/>
+</form>
+</div>
+
+
+</body>
+
+</html>
