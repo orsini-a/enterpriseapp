@@ -8,24 +8,38 @@
   <title>Epitech twitter</title>
 
   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <script type="text/javascript" src="getposts.js"></script>
 <body onload="getposts(this)">
 <script type="text/javascript" src="sendpost.js"></script>
-
-<div name="newStatuForm">
-<form action="updateStatu.html" method="post" enctype="multipart/form-data" onsubmit="tat(this)">
-Que faites-vous ? <input type="text" name="upstatu" /><br />
-<input type="submit" value="Valider"/>
-</form>
+<script type="text/javascript" src="logout.js"></script>
+<header>
+<div id="myhead">
+EPI-TWITTER
 </div>
+</header>
+<div id="sendform">
+<form action="updateStatu.html" method="post" enctype="multipart/form-data" onsubmit="tat(this)">
+What are you doing ? <textarea name="upstatu" rows="2" cols = "65"  ></textarea><input type="submit" value="Send Post"/>
+</form>
+
+</div>
+
+
+
 
 <div id="zone">
 </div>
  
-<div name="logout">
-<form action="index.html" method="post" enctype="multipart/form-data">
-<input type="submit" value="Back"/>
+<div id="mrefreash">
+<form action="updateStatu.html" method="post" enctype="multipart/form-data">
+<input type="submit" value="Refreash"/>
+</form>
+</div>
+<div id="mlogout">
+<form action="index.html" method="post" enctype="multipart/form-data" onsubmit="logout()">
+<input type="submit" value="Logout"/>
 </form>
 </div>
 

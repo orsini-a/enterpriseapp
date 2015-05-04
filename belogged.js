@@ -11,9 +11,14 @@ function postlog(path, params, method)
          url: path,
          type: "POST",
          data: params,
+         cache: false,
         dataType: "json",
          success: function(result) {
              console.log("Response " + JSON.stringify(result) );  
+            
+             var mdata = JSON.parse(JSON.stringify(result));
+             sessionStorage.id = mdata.id;
+             window.location.href = "./updateStatu.html"
           },
       error : function(request, textStatus, errorThrown) {
         alert('textStatus ' + request);
