@@ -7,16 +7,17 @@
   <title>Un exemple</title>
 
   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 
-<body>
-
+<body> 
+<div id="indexstyle">
 <p>
 Bienvenue!
 
 Veuillez-vous connetcer ou vous enregistrer.
 </p>
- 
+
 <form action="connection.html" method="post" enctype="multipart/form-data">
 <input name="connection" type="submit" value="SE CONNECTER"/>
 </form>
@@ -29,6 +30,10 @@ Veuillez-vous connetcer ou vous enregistrer.
 <input name="newuser" type="submit" value="statu"/>
 </form>
 
+<form action="getpo.html" method="post" enctype="multipart/form-data">
+<input name="newuser" type="submit" value="get"/>
+</form>
+</div>
 </body>
 
 </html>

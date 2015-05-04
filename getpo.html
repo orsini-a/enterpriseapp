@@ -1,0 +1,47 @@
+<script type="text/javascript">
+
+function upStatus()
+{
+this.id = "";
+}
+
+function post(path, params, method) 
+{
+	console.log(JSON.stringify(params));
+    $.ajax({
+
+         // contentType: "application/json",
+         crossDomain: true,
+      
+         url: path,
+         type: "POST",
+         data: params,
+                  dataType: "json",
+         success: function(result) {
+             console.log("Response " + JSON.stringify(result) );//JSON.stringify(result));
+          
+          },
+      error : function(request, textStatus, errorThrown) {
+        alert('textStatus ' + request);
+
+        alert('textStatus ' + textStatus);
+        alert('errorThrown ' + errorThrown);
+       }
+
+          });
+}
+
+
+function getstat(f)
+{
+
+var obj=new upStatus();
+obj["id"]='3';//f.uid.value;//f.pseudo.value; // document.getElementById('nom').value
+var jsondata = JSON.stringify(obj); //convertir l'objet au format json
+post("http://snenv-epitech-t3xdqsth8a.elasticbeanstalk.com/get_post", jsondata, "POST");
+
+alert("ok"); 
+      return true;
+   }
+   
+</script>

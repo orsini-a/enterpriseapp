@@ -13,26 +13,26 @@
 <body>
 <script type="text/javascript">
 
-function log()
+function sendlogin()
 {
-this.username = "";
+this.mail = "";
 this.password = "";
 }
 
-function post(path, params, method) 
+function postlog(path, params, method) 
 {
   console.log(JSON.stringify(params));
     $.ajax({
 
          // contentType: "application/json",
          crossDomain: true,
+      
          url: path,
          type: "POST",
          data: params,
-         
-                dataType: "json",
+                  dataType: "json",
          success: function(result) {
-             console.log("Response " + JSON.stringify(result));
+             console.log("Response " + JSON.stringify(result) );//JSON.stringify(result));
           
           },
       error : function(request, textStatus, errorThrown) {
@@ -45,14 +45,16 @@ function post(path, params, method)
           });
 }
 
-function getlog(f)
+
+function loged(f)
 {
 
-var obj=new log();
-obj["username"]=f.username.value;//f.uid.value;//f.pseudo.value; // document.getElementById('nom').value
-obj["password"]= f.password.value;// f.upstatu.value;
-var jsondata = JSON.stringify(obj); //convertir l'objet au format json
-post("http://epitechsocialnetwor-env.elasticbeanstalk.com/login", "{\"username\":\"saluttoi\",\"password\":\"coucou\"}", "POST");
+var obj=new sendlogin();
+obj["mail"]='sa@dede.fr';//f.email.value;
+obj["password"]='123';//f.pass.value;
+jsondata = JSON.stringify(obj);
+postlog("http://snenv-epitech-t3xdqsth8a.elasticbeanstalk.com/login", jsondata, "POST");
+
 alert("ok"); 
       return true;
    }
@@ -61,12 +63,11 @@ alert("ok");
 <!--<script type="text/javascript" src="../controller/c_newUser.html"></script>-->
 
 
-<div name="logform">
-<form action="updateStatu.html" method="post" enctype="multipart/form-data" onsubmit="getlog(this)">
+<div name="loginForm">
+<form action="updateStatu.html" method="post" enctype="multipart/form-data" onsubmit="loged(this)">
 
-    Login: <input type="text" name="username" /><br />
-        Password: <input type="text" name="password" /><br />
-    
+    Mail: <input type="text" name="email" /><br />
+    Password: <input type="text" name="pass" /><br />
     <input type="submit" value="Valider"/>
 </form>
 </div>

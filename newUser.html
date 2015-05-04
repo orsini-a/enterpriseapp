@@ -16,7 +16,7 @@ function User()
 {
 this.username = "";
 this.password = "";
-//this.mail = "";
+this.mail = "";
 //this.followers = "";
 }
 
@@ -147,7 +147,7 @@ function getCreateResponse(f)
 var obj=new User();
 obj["username"]=f.pseudo.value; // document.getElementById('nom').value
 obj["password"]=f.mdp1.value;
-//obj["mail"]=f.email.value;
+obj["mail"]=f.email.value;
 //onj["followers"]=f.pseudo.value;
 var jsondata = JSON.stringify(obj); //convertir l'objet au format json
 
@@ -158,7 +158,7 @@ var jsondata = JSON.stringify(obj); //convertir l'objet au format json
 //     consol.log("ok");
 
 //      var myJSONstr = newUserToJSon(f.pseudo, f.mdp1, f.email, "vgfrvgf");
-      post("http://epitechsocialnetwor-env.elasticbeanstalk.com/add_user", jsondata, "POST");
+      post("http://snenv-epitech-t3xdqsth8a.elasticbeanstalk.com/add_user", jsondata, "POST");
 
         alert("ok"); 
       return true;
