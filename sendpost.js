@@ -9,25 +9,19 @@ function spost(path, params, method)
 {
 	console.log(JSON.stringify(params));
     $.ajax({
-
-         // contentType: "application/json",
-         crossDomain: true,
-      
+         crossDomain: true,     
          url: path,
          type: "POST",
          data: params,
                   dataType: "json",
          success: function(result) {
-             console.log("Response " + JSON.stringify(result) );//JSON.stringify(result));
-          
+             console.log("Response " + JSON.stringify(result) );//JSON.stringify(result));          
           },
       error : function(request, textStatus, errorThrown) {
         alert('textStatus ' + request);
-
         alert('textStatus ' + textStatus);
         alert('errorThrown ' + errorThrown);
        }
-
           });
 }
 

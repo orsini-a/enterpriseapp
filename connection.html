@@ -5,82 +5,22 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <!-- en-tete du document -->
 
-  <title>Un exemple</title>
+  <title>Epitech twitter</title>
 
   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 </head>
 
 <body>
-<script type="text/javascript">
+<script type="text/javascript" src="belogged.js"></script>
 
-function sendlogin()
-{
-this.mail = "";
-this.password = "";
-}
-
-function postlog(path, params, method) 
-{
-  console.log(JSON.stringify(params));
-    $.ajax({
-
-         // contentType: "application/json",
-         crossDomain: true,
-      
-         url: path,
-         type: "POST",
-         data: params,
-                  dataType: "json",
-         success: function(result) {
-             console.log("Response " + JSON.stringify(result) );//JSON.stringify(result));
-          
-          },
-      error : function(request, textStatus, errorThrown) {
-        alert('textStatus ' + request);
-
-        alert('textStatus ' + textStatus);
-        alert('errorThrown ' + errorThrown);
-       }
-
-          });
-}
-
-
-function loged(f)
-{
-
-var obj=new sendlogin();
-obj["mail"]='sa@dede.fr';//f.email.value;
-obj["password"]='123';//f.pass.value;
-jsondata = JSON.stringify(obj);
-postlog("http://snenv-epitech-t3xdqsth8a.elasticbeanstalk.com/login", jsondata, "POST");
-
-alert("ok"); 
-      return true;
-   }
-   
-</script>
-<!--<script type="text/javascript" src="../controller/c_newUser.html"></script>-->
-
-
-<div name="loginForm">
+<div id="loginForm">
 <form action="updateStatu.html" method="post" enctype="multipart/form-data" onsubmit="loged(this)">
 
     Mail: <input type="text" name="email" /><br />
-    Password: <input type="text" name="pass" /><br />
-    <input type="submit" value="Valider"/>
+    Password: <input type="password" name="pass" /><br />
+    <input type="submit" value="SUBMIT"/>
 </form>
 </div>
-
-
-<div name="back">
-<form action="index.html" method="post" enctype="multipart/form-data">
-
-    <input type="submit" value="Back"/>
-</form>
-</div>
-
 
 </body>
-
 </html>
