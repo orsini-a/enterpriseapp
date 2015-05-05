@@ -18,7 +18,8 @@ function postlog(path, params, method)
             
              var mdata = JSON.parse(JSON.stringify(result));
              sessionStorage.id = mdata.id;
-             window.location.href = "./updateStatu.html"
+             
+             window.location.href = "./updateStatu.html";
           },
       error : function(request, textStatus, errorThrown) {
         alert('textStatus ' + request);

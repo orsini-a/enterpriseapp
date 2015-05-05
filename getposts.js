@@ -13,13 +13,20 @@ function post(path, params, method)
          dataType: "json",
          success: function(result)
           {
-           // console.log("Response " + JSON.stringify(result) );
+            console.log("Response " + JSON.stringify(result) );
             var data = JSON.parse(JSON.stringify(result));
-            console.log(data[0].username);
+            //console.log(data[0].username);
             var z = document.getElementById("zone");
             for (var i = 0; i < data.length; i++)
               {
-               z.innerHTML = z.innerHTML + "<div id=\"whos\">" + data[i].username + " said the : " + data[i].date + "</div>";
+               if (data[i].id_user == sessionStorage.getItem("id"))
+               {
+                z.innerHTML = z.innerHTML + "<div id=\"mee\">You said the : " + data[i].date + "</div>";
+               }
+               else
+               {
+                z.innerHTML = z.innerHTML + "<div id=\"whos\">" + data[i].username + " said the : " + data[i].date + "</div>";
+               }
                z.innerHTML = z.innerHTML + "<div id=\"what\">" + data[i].content + "</div></br>";
               }
           },
@@ -34,6 +41,7 @@ function post(path, params, method)
 
 function getposts(f)
 {
+ // alert(sessionStorage.getItem("id"));
   if (sessionStorage.getItem("id") == null  || sessionStorage.getItem("id") == (-1))
   {
     window.location.href = "./connection.html";
